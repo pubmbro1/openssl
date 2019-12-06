@@ -1,0 +1,85 @@
+20:43:31 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c:61:42: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  fwrite(pubKeyChar, sizeof(char), strlen(pubKeyChar)+1, fp);
+                                          ^~~~~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c: In function ‘deerializePubKey’:
+../src/HW.c:72:12: warning: unused variable ‘rpoint’ [-Wunused-variable]
+  EC_POINT *rpoint = EC_POINT_new(EC_KEY_get0_group(reckey));
+            ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:43:46 **** Incremental Build of configuration Debug for project HW ****
+make all 
+make: 'all'을(를) 위해 할 일이 없습니다.
+20:52:03 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c:60:42: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  fwrite(pubKeyChar, sizeof(char), strlen(pubKeyChar)+1, fp);
+                                          ^~~~~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:53:01 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:53:35 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 

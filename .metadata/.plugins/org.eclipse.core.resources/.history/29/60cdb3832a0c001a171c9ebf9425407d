@@ -1,0 +1,45 @@
+/*
+ ============================================================================
+ Name        : rsa.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <openssl/rsa.h>
+#include <openssl/pem.h>
+#include <openssl/evp.h>
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+
+	RSA *alice_keypair = RSA_generate_key(2048, 3, NULL, NULL);
+	if(alice_keypair == NULL) goto cleanup;
+
+	//alloc BIO structure
+	BIO *pub = BIO_new(BIO_s_mem());
+	if(pub == NULL) goto cleanup;
+
+	PEM_write_bio_RSAPublicKey(pub, alice_keypair);
+
+	size_t pub_len = BIO_pending(pub);
+	char *pub_key = malloc(pub_len+1);
+	if(pub_key == NULL) goto cleanup;
+
+	BIO_read(pub, pub_key, pub_len);
+	pub_key[] = '\0';
+
+	puts(pub_key);
+
+
+
+cleanup:
+	if(alice_keypair != NULL) RSA_free(alice_keypair);
+	if(pub != NULL) BIO_free_all(pub);
+	if(pub_key != NULL) free(pub_key);
+	return EXIT_SUCCESS;
+}

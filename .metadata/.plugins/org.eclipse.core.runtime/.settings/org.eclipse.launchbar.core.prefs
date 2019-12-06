@@ -1,0 +1,9 @@
+LaunchTargetManager/configs/ecdh=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/hello=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:des-cbc,org.eclipse.launchbar.core.descriptorType.default\:hello,org.eclipse.launchbar.core.descriptorType.default\:rsa,org.eclipse.launchbar.core.descriptorType.default\:ecdh,org.eclipse.launchbar.core.descriptorType.default\:HW
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:hello/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:hello/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

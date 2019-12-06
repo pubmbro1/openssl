@@ -1,0 +1,46 @@
+14:44:35 **** Incremental Build of configuration Debug for project rsa ****
+make all 
+Building file: ../src/hybrid.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/hybrid.d" -MT"src/hybrid.o" -o "src/hybrid.o" "../src/hybrid.c"
+../src/hybrid.c: In function ‘main’:
+../src/hybrid.c:35:3: warning: implicit declaration of function ‘PEM_write_bio_PUBKEY’; did you mean ‘PEM_write_bio_ASN1_stream’? [-Wimplicit-function-declaration]
+   PEM_write_bio_PUBKEY(publicBIO, bob_keypair);
+   ^~~~~~~~~~~~~~~~~~~~
+   PEM_write_bio_ASN1_stream
+../src/hybrid.c:41:8: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+   puts(pubkeyChar);
+        ^~~~~~~~~~
+In file included from ../src/hybrid.c:7:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/hybrid.c:49:3: warning: implicit declaration of function ‘PEM_read_bio_RSA_PUBKEY’; did you mean ‘ASN1_F_I2D_RSA_PUBKEY’? [-Wimplicit-function-declaration]
+   PEM_read_bio_RSA_PUBKEY(rsaPublicBIO, &rsaPublicKey, NULL, NULL);
+   ^~~~~~~~~~~~~~~~~~~~~~~
+   ASN1_F_I2D_RSA_PUBKEY
+../src/hybrid.c:59:3: warning: implicit declaration of function ‘PEM_write_bio_PrivateKey’; did you mean ‘PEM_write_bio_ASN1_stream’? [-Wimplicit-function-declaration]
+   PEM_write_bio_PrivateKey(privateBIO, bob_keypair, NULL, NULL,0, 0, NULL);
+   ^~~~~~~~~~~~~~~~~~~~~~~~
+   PEM_write_bio_ASN1_stream
+In file included from ../src/hybrid.c:10:0:
+../src/hybrid.c:101:53: warning: pointer targets in passing argument 4 of ‘EVP_EncryptUpdate’ differ in signedness [-Wpointer-sign]
+   EVP_SealUpdate(rsaEncryptCtx, ctxt, &encBlockLen, msg, msglen);
+                                                     ^
+/usr/include/openssl/evp.h:582:16: note: expected ‘const unsigned char *’ but argument is of type ‘char *’
+ /*__owur*/ int EVP_EncryptUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out,
+                ^~~~~~~~~~~~~~~~~
+../src/hybrid.c:120:3: warning: implicit declaration of function ‘PEM_read_bio_RSAPrivateKey’; did you mean ‘d2i_RSAPrivateKey’? [-Wimplicit-function-declaration]
+   PEM_read_bio_RSAPrivateKey(rsaPrivateBIO, &rsaPrivateKey, NULL, NULL);
+   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   d2i_RSAPrivateKey
+Finished building: ../src/hybrid.c
+ 
+Building target: rsa
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "rsa"  ./src/hybrid.o   -lcrypto
+Finished building target: rsa
+ 
+
+14:44:37 Build Finished. 0 errors, 6 warnings. (took 1s.694ms)
+

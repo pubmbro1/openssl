@@ -1,0 +1,19 @@
+20:53:35 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+
+20:53:36 Build Finished. 0 errors, 1 warnings. (took 1s.310ms)
+

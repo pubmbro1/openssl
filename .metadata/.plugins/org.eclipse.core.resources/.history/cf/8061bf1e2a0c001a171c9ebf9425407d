@@ -1,0 +1,32 @@
+/*
+ ============================================================================
+ Name        : rsa.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <openssl/rsa.h>
+#include <openssl/pem.h>
+#include <openssl/evp.h>
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+
+	RSA *alice_keypair = RSA_generate_key(2048, 3, NULL, NULL);
+	if(alice_keypair == NULL){
+		goto cleanup;
+	}
+
+
+
+
+cleanup:
+	if(alice_keypair != NULL) free(alice_keypair);
+
+	return EXIT_SUCCESS;
+}

@@ -1,0 +1,37 @@
+18:09:27 **** Incremental Build of configuration Debug for project ecdh ****
+make all 
+Building file: ../src/ecdh.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/ecdh.d" -MT"src/ecdh.o" -o "src/ecdh.o" "../src/ecdh.c"
+../src/ecdh.c: In function ‘main’:
+../src/ecdh.c:67:31: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *peer_pub_ecpoint = EC_KEY_get0_public_key(peer_eckey);
+                               ^~~~~~~~~~~~~~~~~~~~~~
+../src/ecdh.c:83:46: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  fwrite(peerPubkeyChar, sizeof(char), strlen(peerPubkeyChar)+1, file_bob);
+                                              ^~~~~~~~~~~~~~
+In file included from ../src/ecdh.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/ecdh.c:86:23: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t {aka long unsigned int}’ [-Wformat=]
+  printf("\nbuf len = %d\npeer key\n", buflen);
+                      ~^
+                      %ld
+../src/ecdh.c:87:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(peerPubkeyChar);
+       ^~~~~~~~~~~~~~
+In file included from ../src/ecdh.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+Finished building: ../src/ecdh.c
+ 
+Building target: ecdh
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "ecdh"  ./src/ecdh.o   -lcrypto
+Finished building target: ecdh
+ 
+
+18:09:28 Build Finished. 0 errors, 4 warnings. (took 1s.305ms)
+

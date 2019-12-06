@@ -1,0 +1,63 @@
+/*
+ ============================================================================
+ Name        : HW.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	puts("!!!Homework!!!"); /* prints !!!Hello World!!! */
+	/*
+	 * 0. Generate EC domain params
+	 * */
+
+	/*
+	 * 1. Generate Alice's EC Key Pair (done by A) => EVP PKEY
+	 * */
+
+
+	/*
+	 * 2. Generate Bob's EC Key Pair (done by B) => EVP PKEY
+	 * */
+
+
+	/*
+	 * 3. Serialize Bob's public key (done by B) : EVP_PKEY => char[]
+	 *
+	 * homework : bob's write char[] to file / alice reads
+	 * */
+
+
+	/*
+	 * 4. DeSerialize Bob's public key (done by A) : char[] => EVP_PKEY
+	 * */
+
+
+
+	/*
+	 * 5. Compute ECDH shared secret (done by A)
+	 * */
+
+
+	/*
+	 * 6. Serialize A's public key (done by A) : EVP_PKEY => char[]
+	 * */
+
+
+
+	/*
+	 * 7. De-serialize A's public key (done by B) : char[] => EVP_PKEY
+	 * */
+
+	/*
+	 * 8. Compute ECDH shared secret (done by B)
+	 * */
+
+	return EXIT_SUCCESS;
+}

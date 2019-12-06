@@ -1,0 +1,206 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <openssl/rand.h>
+#include <openssl/evp.h>
+#include <string.h>
+
+//SIZE
+#define BLOCK_SIZE 16
+#define CHUNK_SIZE 1024
+//FILE PATH (NAME)
+#define PTXT_FILE "alice29.txt"
+#define CTXT_FILE "myciphertext.bin"
+#define RTXT_FILE "mydecrypted.txt"
+//FLAG
+#define ENC_INIT 100
+#define MAC_INIT 101
+
+
+//Print Key or IV or MAC
+void printKeyIV(unsigned char *obj){
+	if(obj == NULL)
+		printf("allocation error\n");
+	else{
+		for(int i=0;i<BLOCK_SIZE;i++)
+			printf("0x%X ", obj[i]);
+		printf("\n");
+	}
+}
+
+//Set Key or IV
+unsigned char* setRandKeyIv(EVP_CIPHER_CTX *ctx){
+	int length = EVP_CIPHER_CTX_key_length(ctx);
+	unsigned char* obj = (unsigned char*) malloc(length);
+	RAND_bytes(obj,length);
+
+	return obj;
+}
+
+//Init CTX
+void init(EVP_CIPHER_CTX **ctx_enc, EVP_CIPHER_CTX **ctx_dec, int flag1, int flag2, char *str){
+	*ctx_enc = EVP_CIPHER_CTX_new();
+	*ctx_dec = EVP_CIPHER_CTX_new();
+
+	EVP_CipherInit_ex(*ctx_enc, EVP_aes_128_cbc(), NULL, NULL, NULL, flag1);
+	EVP_CipherInit_ex(*ctx_dec, EVP_aes_128_cbc(), NULL, NULL, NULL, flag2);
+
+	unsigned char *key = setRandKeyIv(*ctx_enc);
+	unsigned char *iv = setRandKeyIv(*ctx_enc);
+
+	printf("##%s key##\n", str);
+	printKeyIV(key);
+	printf("##%s IV##\n", str);
+	printKeyIV(iv);
+
+	EVP_CipherInit_ex(*ctx_enc, EVP_aes_128_cbc(), NULL, key, iv, flag1);
+	EVP_CipherInit_ex(*ctx_dec, EVP_aes_128_cbc(), NULL, key, iv, flag2);
+
+	free(key);
+	free(iv);
+}
+
+//Update file : ifName -> ofName , (use Enc or Dec)
+//Success : return 0
+int do_update_file(EVP_CIPHER_CTX *ctx, char *ifName, char *ofName){
+	FILE *ifp = fopen(ifName, "r");
+	FILE *ofp = fopen(ofName, "w");
+	if(ifp == NULL || ofp == NULL) return -1;
+
+	unsigned char *inbuf = (unsigned char *) malloc(CHUNK_SIZE);
+	unsigned char *outbuf = (unsigned char *) malloc(CHUNK_SIZE + EVP_CIPHER_CTX_block_size(ctx));
+	if(inbuf == NULL || outbuf == NULL) return -1;
+
+	int result;
+	int inlen = 0, tmp =0;
+	while(feof(ifp) != 1){
+		inlen = fread(inbuf, sizeof(char), CHUNK_SIZE, ifp);
+		result = EVP_CipherUpdate(ctx, outbuf, &tmp, inbuf, inlen);
+		if(result != 1) return -1;
+		fwrite(outbuf, sizeof(char), tmp, ofp);
+	}
+
+	result = EVP_CipherFinal_ex(ctx, outbuf, &tmp);
+	if(result != 1) return -1;
+	fwrite(outbuf, sizeof(char), tmp, ofp);
+
+	fclose(ifp);
+	fclose(ofp);
+	free(inbuf);
+	free(outbuf);
+
+	return 0;
+}
+
+//Encrypt PTXT -> CTXT
+void do_encrypt_file(EVP_CIPHER_CTX *ctx_enc){
+	printf("##Encryption result##\n");
+	if(do_update_file(ctx_enc, PTXT_FILE, CTXT_FILE) == 0)
+		printf("%s created.\n\n", CTXT_FILE);
+	else
+		printf("Failed");
+}
+//Decrypt CTXT -> RTXT
+void do_decrypt_file(EVP_CIPHER_CTX *ctx_dec){
+	printf("##Decryption result##\n");
+	if(do_update_file(ctx_dec, CTXT_FILE, RTXT_FILE) == 0)
+		printf("%s created.\n\n", RTXT_FILE);
+	else
+		printf("Failed");
+}
+
+//Compute Last CBC Block, return MAC (use Com or Verf)
+unsigned char* comMAC(EVP_CIPHER_CTX *ctx_mac, char *fileName){
+	FILE *ifp = fopen(fileName, "r");
+	if(ifp == NULL) return NULL;
+
+	unsigned char *inbuf = (unsigned char *) malloc(BLOCK_SIZE);
+	unsigned char *outbuf = (unsigned char *) malloc(BLOCK_SIZE+1);
+	if(inbuf == NULL || outbuf == NULL) return NULL;
+
+	int result;
+	int inlen = 0, tmp =0;
+	while(feof(ifp) != 1){
+		inlen = fread(inbuf, sizeof(char), BLOCK_SIZE, ifp);
+		result = EVP_CipherUpdate(ctx_mac, outbuf, &tmp, inbuf, inlen);
+		if(result != 1) return NULL;
+	}
+
+	result = EVP_CipherFinal_ex(ctx_mac, outbuf, &tmp);
+	if(result != 1) return NULL;
+	outbuf[BLOCK_SIZE] = '\0';
+
+	fclose(ifp);
+	free(inbuf);
+
+	return outbuf;
+}
+
+//Compute MAC
+void do_compute_mac(EVP_CIPHER_CTX **ctx_mac, unsigned char **MAC){
+	*MAC = comMAC(*ctx_mac, PTXT_FILE);
+
+	printf("##MAC##\n");
+	printKeyIV(*MAC);
+	printf("\n");
+}
+
+//Verify MAC
+void do_verify_mac(EVP_CIPHER_CTX **ctx_mac, unsigned char **MAC){
+	unsigned char *verify_MAC;
+
+	verify_MAC = comMAC(*ctx_mac, PTXT_FILE);
+
+	printf("##Message verification result##\n");
+
+	printf("Compare MAC\n");
+	printKeyIV(*MAC);
+	printKeyIV(verify_MAC);
+	printf("\n");
+
+	if(strcmp((char*)(*MAC),(char*)verify_MAC) == 0)
+		printf("Verifying MAC was successful.\n\n");
+	else
+		printf("Verifying failed.\n\n");
+
+	free(verify_MAC);
+}
+
+int main(void) {
+	EVP_CIPHER_CTX *ctx_enc = NULL;
+	EVP_CIPHER_CTX *ctx_dec = NULL;
+	EVP_CIPHER_CTX *ctx_compute_mac = NULL;
+	EVP_CIPHER_CTX *ctx_verify_mac = NULL;
+	unsigned char *MAC = NULL;
+
+
+	init(&ctx_enc, &ctx_dec);
+	do_encrypt_file(ctx_enc);
+	initMAC(&ctx_compute_mac, &ctx_verify_mac);
+	do_compute_mac(&ctx_compute_mac, &MAC);
+	do_verify_mac(&ctx_verify_mac, &MAC);
+	do_decrypt_file(ctx_dec);
+
+
+	EVP_CIPHER_CTX_free(ctx_enc);
+	EVP_CIPHER_CTX_free(ctx_dec);
+	EVP_CIPHER_CTX_free(ctx_compute_mac);
+	EVP_CIPHER_CTX_free(ctx_verify_mac);
+	free(MAC);
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
