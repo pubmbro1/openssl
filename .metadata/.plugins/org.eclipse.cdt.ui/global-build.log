@@ -1,34 +1,10 @@
-20:43:31 **** Incremental Build of configuration Debug for project HW ****
-make all 
-Building file: ../src/HW.c
-Invoking: GCC C Compiler
-gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
-../src/HW.c: In function ‘serializePubKey’:
-../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
-  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
-                      ^~~~~~~~~~~~~~~~~~~~~~
-../src/HW.c:61:42: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-  fwrite(pubKeyChar, sizeof(char), strlen(pubKeyChar)+1, fp);
-                                          ^~~~~~~~~~
-In file included from ../src/HW.c:13:0:
-/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
- extern size_t strlen (const char *__s)
-               ^~~~~~
-../src/HW.c: In function ‘deerializePubKey’:
-../src/HW.c:72:12: warning: unused variable ‘rpoint’ [-Wunused-variable]
-  EC_POINT *rpoint = EC_POINT_new(EC_KEY_get0_group(reckey));
-            ^~~~~~
-Finished building: ../src/HW.c
- 
-Building target: HW
-Invoking: GCC C Linker
-gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
-Finished building target: HW
- 
-20:43:46 **** Incremental Build of configuration Debug for project HW ****
+20:31:36 **** Incremental Build of configuration Debug for project HW ****
 make all 
 make: 'all'을(를) 위해 할 일이 없습니다.
-20:52:03 **** Incremental Build of configuration Debug for project HW ****
+20:31:39 **** Incremental Build of configuration Debug for project HW ****
+make all 
+make: 'all'을(를) 위해 할 일이 없습니다.
+20:31:54 **** Incremental Build of configuration Debug for project HW ****
 make all 
 Building file: ../src/HW.c
 Invoking: GCC C Compiler
@@ -37,9 +13,46 @@ gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -M
 ../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
   EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
                       ^~~~~~~~~~~~~~~~~~~~~~
-../src/HW.c:60:42: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-  fwrite(pubKeyChar, sizeof(char), strlen(pubKeyChar)+1, fp);
-                                          ^~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:108:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:110:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:110:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:117:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:118:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:119:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
 In file included from ../src/HW.c:13:0:
 /usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
  extern size_t strlen (const char *__s)
@@ -51,7 +64,7 @@ Invoking: GCC C Linker
 gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
 Finished building target: HW
  
-20:53:01 **** Incremental Build of configuration Debug for project HW ****
+20:32:34 **** Incremental Build of configuration Debug for project HW ****
 make all 
 Building file: ../src/HW.c
 Invoking: GCC C Compiler
@@ -60,6 +73,50 @@ gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -M
 ../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
   EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
                       ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:107:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:118:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
 Finished building: ../src/HW.c
  
 Building target: HW
@@ -67,7 +124,7 @@ Invoking: GCC C Linker
 gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
 Finished building target: HW
  
-20:53:35 **** Incremental Build of configuration Debug for project HW ****
+20:32:43 **** Incremental Build of configuration Debug for project HW ****
 make all 
 Building file: ../src/HW.c
 Invoking: GCC C Compiler
@@ -76,6 +133,1584 @@ gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -M
 ../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
   EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
                       ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘deserializePubKey’:
+../src/HW.c:80:14: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+    pubKeyChar, (size_t)len, NULL);
+              ^
+../src/HW.c:80:27: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+    pubKeyChar, (size_t)len, NULL);
+                           ^
+../src/HW.c:80:27: warning: statement with no effect [-Wunused-value]
+../src/HW.c:80:33: error: expected ‘;’ before ‘)’ token
+    pubKeyChar, (size_t)len, NULL);
+                                 ^
+../src/HW.c:80:33: error: expected statement before ‘)’ token
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:107:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:118:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+make: *** [src/HW.o] Error 1
+src/subdir.mk:18: recipe for target 'src/HW.o' failed
+"make all" terminated with exit code 2. Build might be incomplete.
+20:32:49 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:107:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:118:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:33:18 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:33:41 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:34:05 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:34:43 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:34:58 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:35:09 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:35:19 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:35:43 **** Incremental Build of configuration Debug for project HW ****
+make all 
+make: 'all'을(를) 위해 할 일이 없습니다.
+20:35:54 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:36:08 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:36:49 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:37:13 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:37:25 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0)
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:39:19 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:106:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:108:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:115:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1); fflush(stdout);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2); fflush(stdout);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:39:43 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:107:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret1); fflush(stdout);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:117:7: warning: pointer targets in passing argument 1 of ‘puts’ differ in signedness [-Wpointer-sign]
+  puts(secret2); fflush(stdout);
+       ^~~~~~~
+In file included from ../src/HW.c:11:0:
+/usr/include/stdio.h:632:12: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern int puts (const char *__s);
+            ^~~~
+../src/HW.c:118:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:40:17 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:107:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:109:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:118:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:42:12 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:111:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:111:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:120:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:42:58 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:111:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:111:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:120:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:43:17 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:111:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:111:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:120:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:43:35 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:112:23: warning: passing argument 2 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                       ^~~~~~
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘unsigned char *’ but argument is of type ‘unsigned char **’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:112:31: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, secret, &len);
+                               ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:121:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:44:12 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:112:32: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, *secret, &len);
+                                ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:121:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:44:35 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:114:32: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, *secret, &len);
+                                ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:123:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:45:56 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:114:32: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, *secret, &len);
+                                ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:123:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:47:48 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:115:15: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  (*secret)[0] = "a";
+               ^
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:48:28 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:115:15: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+  (*secret)[0] = "a";
+               ^
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:48:52 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:109:29: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, NULL, &len);
+                             ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c:115:32: warning: passing argument 3 of ‘EVP_PKEY_derive’ from incompatible pointer type [-Wincompatible-pointer-types]
+  EVP_PKEY_derive(ctx, *secret, &len);
+                                ^
+In file included from ../src/HW.c:14:0:
+/usr/include/openssl/evp.h:1406:5: note: expected ‘size_t * {aka long unsigned int *}’ but argument is of type ‘int *’
+ int EVP_PKEY_derive(EVP_PKEY_CTX *ctx, unsigned char *key, size_t *keylen);
+     ^~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:124:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:50:10 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:113:17: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t {aka long unsigned int}’ [-Wformat=]
+  printf("test2 %d\n", len);
+                ~^
+                %ld
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:124:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:51:07 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:118:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:52:18 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  for(int i=0;i<strlen(secret1);i++){
+                       ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c:120:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  for(int i=0;i<strlen(secret2);i++){
+                       ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c:124:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:53:39 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  for(int i=0;i<strlen(secret1);i++){
+                       ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c:120:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  for(int i=0;i<strlen(secret2);i++){
+                       ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c:124:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+20:59:23 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:116:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  for(int i=0;i<strlen(secret1);i++){
+                       ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c:120:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  for(int i=0;i<strlen(secret2);i++){
+                       ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
 Finished building: ../src/HW.c
  
 Building target: HW

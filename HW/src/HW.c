@@ -51,10 +51,11 @@ void serializePubKey(EVP_PKEY *pkey, const char * filename){
 			POINT_CONVERSION_COMPRESSED, pubKeyChar, bufLen, NULL);
 
 
-	printf("\n==pubKeyChar : bob %d==\n", bufLen);
+	printf("\n==Serialize Public Key==\n");
 	for(int i=0;i<bufLen;i++){
 		printf("0x%X ", pubKeyChar[i]);
 	}
+	printf("\n");
 
 	FILE *fp = fopen(filename, "w");
 	fwrite(pubKeyChar, sizeof(char), bufLen, fp);
@@ -65,27 +66,29 @@ void serializePubKey(EVP_PKEY *pkey, const char * filename){
 	fclose(fp);
 }
 
-void deserializePubKey(const char * filename){
+void deserializePubKey(EVP_PKEY **pub, const char * filename){
 	EC_KEY *reckey = EC_KEY_new_by_curve_name(NID_X9_62_prime256v1);
 	EC_POINT *rpoint = EC_POINT_new(EC_KEY_get0_group(reckey));
 
 	FILE *fp = fopen(filename, "r");
 	fseek(fp, 0, SEEK_END);
 	int len = ftell(fp);
-	unsigned char *pubKeyChar = (unsigned char *) malloc (len + 1);
+	unsigned char *pubKeyChar = (unsigned char *) malloc (len);
 	fseek(fp, 0, SEEK_SET);
 	fread(pubKeyChar, len, 1, fp);
 
-
-	EC_POINT_oct2point(EC_KEY_get0_group(reckey), rpoint,
-			pubKeyChar, len, NULL);
+	EC_POINT_oct2point(EC_KEY_get0_group(reckey), rpoint, pubKeyChar, (size_t)len, NULL);
 	EC_KEY_set_public_key(reckey, rpoint);
 
+	*pub = EVP_PKEY_new();
+	EVP_PKEY_set1_EC_KEY( *pub , reckey);
 
-	printf("\n==RepubKeyChar : bob %d==\n", len);
+
+	printf("\n==Deserialize Public Key==\n");
 	for(int i=0;i<len;i++){
 		printf("0x%X ", pubKeyChar[i]);
 	}
+	printf("\n");
 
 	EC_KEY_free(reckey);
 	EC_POINT_free(rpoint);
@@ -94,65 +97,88 @@ void deserializePubKey(const char * filename){
 
 }
 
-void computeSharedSecret(EVP_PKEY *pkey, EVP_PKEY *peer_pub_key){
+void computeSharedSecret(EVP_PKEY *pkey, EVP_PKEY *peer_pub_key, unsigned char **secret){
 	EVP_PKEY_CTX *ctx = EVP_PKEY_CTX_new(pkey, NULL);
 	EVP_PKEY_derive_init(ctx);
-	EVP_PKEY_dervie_set_peer(ctx, peer_pub_key);
+	EVP_PKEY_derive_set_peer(ctx, peer_pub_key);
 
-	int len = 0;
+	size_t len = 0;
 
 	EVP_PKEY_derive(ctx, NULL, &len);
-	unsigned char *secret = (unsigned char *) malloc(len);
-	EVP_PKEY_derive(ctx, secret, &len);
 
+	*secret = (unsigned char *) malloc(len);
+	EVP_PKEY_derive(ctx, *secret, &len);
 	EVP_PKEY_CTX_free(ctx);
 }
 
-int main(void) {
-	puts("!!!Homework!!!"); /* prints !!!Hello World!!! */
+void compareSharedSecret(unsigned char *secret1, unsigned char *secret2){
+	printf("\n== Compare Shared Secret ==\n");
+	for(int i=0;i<strlen(secret1);i++){
+		printf("0x%X ", secret1[i]);
+	}
+	printf("\n");
+	for(int i=0;i<strlen(secret2);i++){
+		printf("0x%X ", secret2[i]);
+	}
+	printf("\n");
 
+	if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+		printf("Matched\n");
+	}
+	else{
+		printf("Failed\n");
+	}
+}
+
+int main(void) {
 	EVP_PKEY *params = NULL;		//domain
 	EVP_PKEY *a_pkey = NULL;		//alice's keypair
 	EVP_PKEY *b_pkey = NULL;		//bob's keypair
 
-	/*
-	 * 0. Generate EC domain params
-	 * */
+	EVP_PKEY *b_pub_by_a = NULL;		//bob's public key
+	EVP_PKEY *a_pub_by_b = NULL; 		//alice's public key
+
+	unsigned char *a_secret = NULL;		//alice's shared key
+	unsigned char *b_secret = NULL;		//bob's shared key
+
+	//0. Generate EC domain params
 	initDomain(&params);
-	/*
-	 * 1. Generate Alice's EC Key Pair (done by A) => EVP PKEY
-	 * */
+
+	//1. Generate Alice's EC Key Pair (done by A) => EVP PKEY
+	//2. Generate Bob's EC Key Pair (done by B) => EVP PKEY
 	generateKey(&params, &a_pkey);
-	/*
-	 * 2. Generate Bob's EC Key Pair (done by B) => EVP PKEY
-	 * */
 	generateKey(&params, &b_pkey);
-	/*
-	 * 3. Serialize Bob's public key (done by B) : EVP_PKEY => char[]
-	 *
-	 * homework : bob's write char[] to file / alice reads
-	 * */
+
+	//3. Serialize Bob's public key (done by B) : EVP_PKEY => char[]
+	//4. DeSerialize Bob's public key (done by A) : char[] => EVP_PKEY
 	serializePubKey(b_pkey, B_PUB_FILE);
-	/*
-	 * 4. DeSerialize Bob's public key (done by A) : char[] => EVP_PKEY
-	 * */
-	deserializePubKey(B_PUB_FILE);
-	/*
-	 * 5. Compute ECDH shared secret (done by A)
-	 * */
-	compute()
+	deserializePubKey(&b_pub_by_a, B_PUB_FILE);
 
-	/*
-	 * 6. Serialize A's public key (done by A) : EVP_PKEY => char[]
-	 * */
+	//5. Compute ECDH shared secret (done by A)
+	computeSharedSecret(a_pkey, b_pub_by_a, &a_secret);
 
-	/*
-	 * 7. De-serialize A's public key (done by B) : char[] => EVP_PKEY
-	 * */
+	//6. Serialize A's public key (done by A) : EVP_PKEY => char[]
+	//7. Deserialize A's public key (done by B) : char[] => EVP_PKEY
+	serializePubKey(a_pkey, A_PUB_FILE);
+	deserializePubKey(&a_pub_by_b, A_PUB_FILE);
 
-	/*
-	 * 8. Compute ECDH shared secret (done by B)
-	 * */
+	//8. Compute ECDH shared secret (done by B)
+	computeSharedSecret(b_pkey, a_pub_by_b, &b_secret);
+
+	//9. Compare Bob's secret with Alice's secret
+	compareSharedSecret(a_secret, b_secret);
+
+
+	//free key
+	EVP_PKEY_free(params);
+	EVP_PKEY_free(a_pkey);
+	EVP_PKEY_free(b_pkey);
+
+	EVP_PKEY_free(a_pub_by_b);
+	EVP_PKEY_free(b_pub_by_a);
+
+	free(a_secret);
+	free(b_secret);
 
 	return EXIT_SUCCESS;
 }
