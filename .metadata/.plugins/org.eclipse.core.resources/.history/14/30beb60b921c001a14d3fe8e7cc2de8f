@@ -49,8 +49,9 @@ void serializePubKey(EVP_PKEY *pkey, const char * filename, const char *who){
 
 	EC_POINT_point2oct(EC_KEY_get0_group(eckey), ecpoint,
 			POINT_CONVERSION_COMPRESSED, pubKeyChar, bufLen, NULL);
+	printf("\n");
 	printf("\n[%s's public key]\n", who);
-
+	printf("\n");
 	for(int i=0;i<bufLen;i++){
 		printf("0x%X ", pubKeyChar[i]);
 	}
@@ -112,7 +113,7 @@ void computeSharedSecret(EVP_PKEY *pkey, EVP_PKEY *peer_pub_key, unsigned char *
 
 	printf("\n[Shared secret on %s]\n", who);
 	for(int i=0;i<len;i++){
-		printf("0x%X ", (*secret)[i]);
+		printf("0x%X ", secret[i]);
 	}
 	printf("\n");
 
@@ -144,31 +145,31 @@ int main(void) {
 
 	initDomain(&params);
 
-	printf(">> Beginning of the 1st part of Alice");
+	printf("\n>> Beginning of the 1st part of Alice\n");
+	printf("abc\n");
 	generateKey(&params, &a_pkey);
-	serializePubKey(a_pkey, A_PUB_FILE, "Alice");
+	serializePubKey(b_pkey, B_PUB_FILE, "Alice");
 	printf("\n<< End of the 1st part of Alice\n");
-	printf("==========================================");
 
-	printf("\n>> Beginning of the 1st part of Bob");
+
+	printf("\n>> Beginning of the 1st part of Bob\n");
 	generateKey(&params, &b_pkey);
-	serializePubKey(b_pkey, B_PUB_FILE, "Bob");
+	serializePubKey(a_pkey, A_PUB_FILE, "Bob");
 	printf("\n<< End of the 1st part of Bob\n");
-	printf("==========================================");
 
 
-	printf("\n>> Beginning of the 2st part of Alice");
+	printf("\n>> Beginning of the 2st part of Alice\n");
 	deserializePubKey(&b_pub_by_a, B_PUB_FILE);
 	computeSharedSecret(a_pkey, b_pub_by_a, &a_secret, "Alice");
 	printf("\n<< End of the 2st part of Alice\n");
-	printf("==========================================");
 
 
-	printf("\n>> Beginning of the 2st part of Bob");
+	printf("\n>> Beginning of the 2st part of Bob\n");
 	deserializePubKey(&a_pub_by_b, A_PUB_FILE);
 	computeSharedSecret(b_pkey, a_pub_by_b, &b_secret, "Bob");
 	compareSharedSecret(a_secret, b_secret);
 	printf("\n<< End of the 2st part of Bob\n");
+
 
 
 	//free key

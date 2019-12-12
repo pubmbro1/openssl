@@ -1718,3 +1718,650 @@ Invoking: GCC C Linker
 gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
 Finished building target: HW
  
+12:44:49 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:45:15 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+../src/HW.c: In function ‘main’:
+../src/HW.c:149:2: error: expected ‘;’ before ‘generateKey’
+src/subdir.mk:18: recipe for target 'src/HW.o' failed
+  generateKey(&params, &a_pkey);
+  ^~~~~~~~~~~
+make: *** [src/HW.o] Error 1
+"make all" terminated with exit code 2. Build might be incomplete.
+12:45:23 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:46:19 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:46:28 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:46:47 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:46:59 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:47:16 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:47:49 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:48:58 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:49:47 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:49:57 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:44:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:50:13 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:45:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:117:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:127:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:51:15 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:53:39 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:53:56 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:55:46 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:57:06 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:116:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:126:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:57:26 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘computeSharedSecret’:
+../src/HW.c:115:14: warning: format ‘%X’ expects argument of type ‘unsigned int’, but argument 2 has type ‘unsigned char *’ [-Wformat=]
+   printf("0x%X ", secret[i]);
+             ~^    ~~~~~~~~~
+             %hhn
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:57:50 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+12:58:05 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+13:00:52 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 
+13:01:40 **** Incremental Build of configuration Debug for project HW ****
+make all 
+Building file: ../src/HW.c
+Invoking: GCC C Compiler
+gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -MT"src/HW.o" -o "src/HW.o" "../src/HW.c"
+../src/HW.c: In function ‘serializePubKey’:
+../src/HW.c:43:22: warning: initialization discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
+                      ^~~~~~~~~~~~~~~~~~~~~~
+../src/HW.c: In function ‘compareSharedSecret’:
+../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  if(memcmp(secret1, secret2, strlen(secret1)) == 0){
+                                     ^~~~~~~
+In file included from ../src/HW.c:13:0:
+/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
+ extern size_t strlen (const char *__s)
+               ^~~~~~
+Finished building: ../src/HW.c
+ 
+Building target: HW
+Invoking: GCC C Linker
+gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
+Finished building target: HW
+ 

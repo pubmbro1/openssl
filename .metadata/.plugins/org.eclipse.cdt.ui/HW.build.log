@@ -1,4 +1,4 @@
-20:59:23 **** Incremental Build of configuration Debug for project HW ****
+13:01:40 **** Incremental Build of configuration Debug for project HW ****
 make all 
 Building file: ../src/HW.c
 Invoking: GCC C Compiler
@@ -8,20 +8,6 @@ gcc -I/usr/include -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/HW.d" -M
   EC_POINT *ecpoint = EC_KEY_get0_public_key(eckey);
                       ^~~~~~~~~~~~~~~~~~~~~~
 ../src/HW.c: In function ‘compareSharedSecret’:
-../src/HW.c:116:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-  for(int i=0;i<strlen(secret1);i++){
-                       ^~~~~~~
-In file included from ../src/HW.c:13:0:
-/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
- extern size_t strlen (const char *__s)
-               ^~~~~~
-../src/HW.c:120:23: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-  for(int i=0;i<strlen(secret2);i++){
-                       ^~~~~~~
-In file included from ../src/HW.c:13:0:
-/usr/include/string.h:384:15: note: expected ‘const char *’ but argument is of type ‘unsigned char *’
- extern size_t strlen (const char *__s)
-               ^~~~~~
 ../src/HW.c:125:37: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
   if(memcmp(secret1, secret2, strlen(secret1)) == 0){
                                      ^~~~~~~
@@ -37,5 +23,5 @@ gcc -L/usr/lib/x86_64-linux-gnu -o "HW"  ./src/HW.o   -lcrypto
 Finished building target: HW
  
 
-20:59:24 Build Finished. 0 errors, 4 warnings. (took 1s.54ms)
+13:01:41 Build Finished. 0 errors, 2 warnings. (took 1s.333ms)
 
